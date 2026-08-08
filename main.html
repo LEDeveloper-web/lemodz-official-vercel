@@ -36,7 +36,6 @@
       </div>
       <div class="mod-grid">
 
-        <!-- v1.1.0 FIRST — Admin Abuse 2 -->
         <article class="mod-card">
           <div class="mod-badge">v1.1.0</div>
           <div class="mod-icon">🌟</div>
@@ -51,13 +50,12 @@
             <li>Bedrock 1.21+</li>
           </ul>
           <div class="mod-actions">
-            <a class="btn btn-download" href="downloads/LEAdminAbuse-v1.1.0.mcaddon" download="LEAdminAbuse-v1.1.0.mcaddon">Download Mod (.mcaddon)</a>
-            <a class="btn btn-outline" href="downloads/LEAdminAbuse_V1.1.0_Guide.xlsx" download="LEAdminAbuse_V1.1.0_Guide.xlsx">Download Guide (.xlsx)</a>
+            <button type="button" class="btn btn-download loot-btn" data-loot="https://lootdest.org/s?Aq2HBika" data-label="Admin Abuse 2 v1.1.0 — Mod (.mcaddon)">Download Mod (.mcaddon)</button>
+            <button type="button" class="btn btn-outline loot-btn" data-loot="https://loot-link.com/s?073ShIJF" data-label="Admin Abuse 2 v1.1.0 — Guide (.xlsx)">Download Guide (.xlsx)</button>
           </div>
           <p class="mod-meta">Owner: Lanceefi2011 · AI Developer: Grok AI</p>
         </article>
 
-        <!-- v1.0.2 — Update 2 -->
         <article class="mod-card">
           <div class="mod-badge">v1.0.2</div>
           <div class="mod-icon">🛡️</div>
@@ -71,13 +69,12 @@
             <li>Bedrock 1.21+</li>
           </ul>
           <div class="mod-actions">
-            <a class="btn btn-download" href="downloads/LEAdminAbuse-v1.0.2.mcaddon" download="LEAdminAbuse-v1.0.2.mcaddon">Download Mod (.mcaddon)</a>
-            <a class="btn btn-outline" href="downloads/LEAdminAbuse_V1.0.2_Guide.xlsx" download="LEAdminAbuse_V1.0.2_Guide.xlsx">Download Guide (.xlsx)</a>
+            <button type="button" class="btn btn-download loot-btn" data-loot="https://lootdest.org/s?XNaAIJkW" data-label="Admin Abuse update 2 v1.0.2 — Mod (.mcaddon)">Download Mod (.mcaddon)</button>
+            <button type="button" class="btn btn-outline loot-btn" data-loot="https://loot-link.com/s?GUbdoZqj" data-label="Admin Abuse update 2 v1.0.2 — Guide (.xlsx)">Download Guide (.xlsx)</button>
           </div>
           <p class="mod-meta">Owner: Lanceefi2011 · AI Developer: Grok AI</p>
         </article>
 
-        <!-- v1.0.1 — Update 1 -->
         <article class="mod-card">
           <div class="mod-badge">v1.0.1</div>
           <div class="mod-icon">⚡</div>
@@ -91,17 +88,16 @@
             <li>Bedrock 1.21+</li>
           </ul>
           <div class="mod-actions">
-            <a class="btn btn-download" href="downloads/LEAdminAbuse-v1.0.1.mcaddon" download="LEAdminAbuse-v1.0.1.mcaddon">Download Mod (.mcaddon)</a>
-            <a class="btn btn-outline" href="downloads/LEAdminAbuse_V1.0.1_Guide.xlsx" download="LEAdminAbuse_V1.0.1_Guide.xlsx">Download Guide (.xlsx)</a>
+            <button type="button" class="btn btn-download loot-btn" data-loot="https://lootdest.org/s?hOBlzBo7" data-label="Admin Abuse update 1 v1.0.1 — Mod (.mcaddon)">Download Mod (.mcaddon)</button>
+            <button type="button" class="btn btn-outline loot-btn" data-loot="https://loot-link.com/s?PtcyBn4S" data-label="Admin Abuse update 1 v1.0.1 — Guide (.xlsx)">Download Guide (.xlsx)</button>
           </div>
           <p class="mod-meta">Owner: Lanceefi2011 · AI Developer: Grok AI</p>
         </article>
 
-        <!-- v1.0.0 — Original -->
         <article class="mod-card">
           <div class="mod-badge">v1.0.0</div>
           <div class="mod-icon">🏦</div>
-          <h3 class="mod-name">Admin Abuse 1</h3>
+          <h3 class="mod-name">Admin Abuse</h3>
           <p class="mod-version">Mod Version: <strong>v1.0.0</strong></p>
           <p class="mod-desc">Powerful admin commands, full bank card system with Owner-Only protection, lava/death restore, shops, exchange, weather events, homes &amp; warps. Original version using !commands.</p>
           <ul class="mod-tags">
@@ -111,8 +107,8 @@
             <li>Bedrock 1.21+</li>
           </ul>
           <div class="mod-actions">
-            <a class="btn btn-download" href="downloads/LEAdminAbuse-v1.0.0.mcaddon" download="LEAdminAbuse-v1.0.0.mcaddon">Download Mod (.mcaddon)</a>
-            <a class="btn btn-outline" href="downloads/LEAdminAbuse_V1.0.0_Guide.xlsx" download="LEAdminAbuse_V1.0.0_Guide.xlsx">Download Guide (.xlsx)</a>
+            <button type="button" class="btn btn-download loot-btn" data-loot="https://lootdest.org/s?IcvegjBw" data-label="Admin Abuse v1.0.0 — Mod (.mcaddon)">Download Mod (.mcaddon)</button>
+            <button type="button" class="btn btn-outline loot-btn" data-loot="https://loot-link.com/s?I68lwATR" data-label="Admin Abuse v1.0.0 — Guide (.xlsx)">Download Guide (.xlsx)</button>
           </div>
           <p class="mod-meta">Owner: Lanceefi2011 · Dev AI: Grok AI</p>
         </article>
@@ -143,6 +139,21 @@
   <footer class="site-footer">
     <p>© 2026 LEMODZ · Official Website · Family-friendly Minecraft content</p>
   </footer>
+
+  <!-- Download method popup -->
+  <div id="loot-overlay" class="loot-overlay" hidden></div>
+  <div id="loot-modal" class="loot-modal" role="dialog" aria-modal="true" aria-labelledby="loot-modal-title" hidden>
+    <button type="button" class="loot-close" id="loot-close" aria-label="Close">✕</button>
+    <p class="loot-eyebrow">Download method</p>
+    <h2 id="loot-modal-title" class="loot-title">Choose how to download</h2>
+    <p class="loot-file" id="loot-file-label">—</p>
+    <a id="loot-continue" class="btn btn-download loot-continue" href="#" target="_blank" rel="noopener noreferrer">
+      Continue Downloading Using LootLabs
+    </a>
+    <p class="loot-note">Complete the short steps, then your file will start downloading.</p>
+  </div>
+
   <script src="js/app.js"></script>
 </body>
-</html>
+  </html>
+              
