@@ -558,3 +558,79 @@ button.btn-outline {
   background: transparent;
   border: 1px solid var(--border);
 }
+
+/* ========== LootLabs download modal ========== */
+.loot-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  z-index: 200;
+}
+
+.loot-modal {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 210;
+  width: min(400px, calc(100vw - 2rem));
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem 1.35rem 1.35rem;
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+
+.loot-close {
+  position: absolute;
+  top: 0.65rem;
+  right: 0.65rem;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg-elevated);
+  color: var(--text);
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.loot-eyebrow {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+}
+
+.loot-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.loot-file {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin-bottom: 1.15rem;
+  word-break: break-word;
+}
+
+.loot-continue {
+  width: 100%;
+  margin-bottom: 0.75rem;
+}
+
+.loot-note {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  opacity: 0.9;
+}
+
+button.btn.btn-download,
+button.btn.btn-outline {
+  font-family: inherit;
+  cursor: pointer;
+}
