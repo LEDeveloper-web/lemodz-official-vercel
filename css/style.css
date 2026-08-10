@@ -380,6 +380,47 @@ body.starter {
   font-size: 0.9rem;
 }
 
+/* Category tabs (Home) */
+.category-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 1.5rem;
+}
+
+.category-tab {
+  font-family: var(--font);
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0.55rem 1.15rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--bg-elevated);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.category-tab:hover {
+  border-color: var(--accent-dim);
+  color: var(--text);
+}
+
+.category-tab.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #0b0f14;
+}
+
+.category-panel {
+  display: none;
+}
+
+.category-panel.active {
+  display: block;
+  animation: fadeIn 0.3s ease;
+}
+
 /* Mod Card */
 .mod-grid {
   display: grid;
