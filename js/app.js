@@ -45,6 +45,31 @@
     }
   });
 
+  // ===== Home category tabs =====
+  const categoryTabs = document.querySelectorAll(".category-tab");
+  const categoryPanels = document.querySelectorAll(".category-panel");
+
+  categoryTabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+      const cat = tab.getAttribute("data-category");
+      categoryTabs.forEach((t) => {
+        t.classList.remove("active");
+        t.setAttribute("aria-selected", "false");
+      });
+      tab.classList.add("active");
+      tab.setAttribute("aria-selected", "true");
+      categoryPanels.forEach((panel) => {
+        const isMatch = panel.id === "category-" + cat;
+        panel.classList.toggle("active", isMatch);
+        if (isMatch) {
+          panel.removeAttribute("hidden");
+        } else {
+          panel.setAttribute("hidden", "");
+        }
+      });
+    });
+  });
+
   // ===== LootLabs download popup =====
   const lootOverlay = document.getElementById("loot-overlay");
   const lootModal = document.getElementById("loot-modal");
