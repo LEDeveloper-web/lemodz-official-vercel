@@ -1,5 +1,4 @@
 (function () {
-  // ===== Side menu =====
   const menu = document.getElementById("side-menu");
   const overlay = document.getElementById("menu-overlay");
   const openBtn = document.getElementById("menu-open");
@@ -42,10 +41,10 @@
     if (e.key === "Escape") {
       closeMenu();
       closeLoot();
+      closeInfo();
     }
   });
 
-  // ===== Home category tabs =====
   const categoryTabs = document.querySelectorAll(".category-tab");
   const categoryPanels = document.querySelectorAll(".category-panel");
 
@@ -61,16 +60,12 @@
       categoryPanels.forEach((panel) => {
         const isMatch = panel.id === "category-" + cat;
         panel.classList.toggle("active", isMatch);
-        if (isMatch) {
-          panel.removeAttribute("hidden");
-        } else {
-          panel.setAttribute("hidden", "");
-        }
+        if (isMatch) panel.removeAttribute("hidden");
+        else panel.setAttribute("hidden", "");
       });
     });
   });
 
-  // ===== LootLabs download popup =====
   const lootOverlay = document.getElementById("loot-overlay");
   const lootModal = document.getElementById("loot-modal");
   const lootClose = document.getElementById("loot-close");
@@ -89,8 +84,7 @@
   function closeLoot() {
     if (lootModal) lootModal.hidden = true;
     if (lootOverlay) lootOverlay.hidden = true;
-    // only clear overflow if menu is also closed
-    if (!menu || !menu.classList.contains("open")) {
+    if ((!menu || !menu.classList.contains("open")) && (!infoModal || infoModal.hidden)) {
       document.body.style.overflow = "";
     }
   }
@@ -105,4 +99,42 @@
 
   if (lootClose) lootClose.addEventListener("click", closeLoot);
   if (lootOverlay) lootOverlay.addEventListener("click", closeLoot);
+
+  const infoOverlay = document.getElementById("info-overlay");
+  const infoModal = document.getElementById("info-modal");
+  const infoClose = document.getElementById("info-close");
+  const infoTitle = document.getElementById("info-modal-title");
+  const infoEyebrow = document.getElementById("info-eyebrow");
+  const infoBody = document.getElementById("info-modal-body");
+
+  function openInfo(kind, card) {
+    if (!infoModal || !infoBody) return;
+    const name = card.querySelector(".mod-name");
+    const source = card.querySelector(kind === "req" ? ".mod-req-content" : ".mod-desc-content");
+    infoEyebrow.textContent = kind === "req" ? "Requirements" : "Description";
+    infoTitle.textContent = name ? name.textContent : "Mod";
+    infoBody.innerHTML = source ? source.innerHTML : "<p>No details.</p>";
+    infoModal.hidden = false;
+    if (infoOverlay) infoOverlay.hidden = false;
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeInfo() {
+    if (infoModal) infoModal.hidden = true;
+    if (infoOverlay) infoOverlay.hidden = true;
+    if ((!menu || !menu.classList.contains("open")) && (!lootModal || lootModal.hidden)) {
+      document.body.style.overflow = "";
+    }
+  }
+
+  document.querySelectorAll(".info-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const card = btn.closest(".mod-card");
+      const kind = btn.getAttribute("data-kind") || "desc";
+      if (card) openInfo(kind, card);
+    });
+  });
+
+  if (infoClose) infoClose.addEventListener("click", closeInfo);
+  if (infoOverlay) infoOverlay.addEventListener("click", closeInfo);
 })();
