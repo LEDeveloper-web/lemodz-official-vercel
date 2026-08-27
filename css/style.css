@@ -380,7 +380,7 @@ body.starter {
   font-size: 0.9rem;
 }
 
-/* Category tabs (Home) */
+/* Category tabs */
 .category-tabs {
   display: flex;
   flex-wrap: wrap;
@@ -595,6 +595,7 @@ button.btn {
   cursor: pointer;
   border: none;
 }
+
 button.btn-outline {
   background: transparent;
   border: 1px solid var(--border);
@@ -674,4 +675,74 @@ button.btn.btn-download,
 button.btn.btn-outline {
   font-family: inherit;
   cursor: pointer;
+}
+
+/* ========== Info buttons + description/requirements modal ========== */
+.info-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.9rem;
+}
+
+.btn-ghost {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 0.55rem 0.9rem;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.82rem;
+}
+
+.btn-ghost:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.info-modal {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 210;
+  width: min(460px, calc(100vw - 2rem));
+  max-height: min(80vh, 640px);
+  overflow: auto;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem 1.35rem 1.35rem;
+  box-shadow: var(--shadow);
+  text-align: left;
+}
+
+.info-modal-body {
+  color: var(--text-muted);
+  font-size: 0.92rem;
+}
+
+.info-modal-body h4 {
+  color: var(--accent);
+  font-size: 0.95rem;
+  margin: 0.9rem 0 0.4rem;
+}
+
+.info-modal-body p,
+.info-modal-body ul,
+.info-modal-body ol {
+  margin-bottom: 0.7rem;
+}
+
+.info-modal-body ul,
+.info-modal-body ol {
+  padding-left: 1.2rem;
+}
+
+.info-modal-body li {
+  margin-bottom: 0.3rem;
+}
+
+.info-modal .loot-title {
+  text-align: left;
 }
