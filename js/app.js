@@ -17,23 +17,30 @@
     if (!menu) return;
     menu.classList.remove("open");
     if (overlay) overlay.classList.remove("visible");
-    document.body.style.overflow = "";
+    if ((!lootModal || lootModal.hidden) && (!infoModal || infoModal.hidden)) {
+      document.body.style.overflow = "";
+    }
   }
 
   if (openBtn) openBtn.addEventListener("click", openMenu);
   if (closeBtn) closeBtn.addEventListener("click", closeMenu);
   if (overlay) overlay.addEventListener("click", closeMenu);
 
+  function showPage(page) {
+    links.forEach((l) => {
+      const on = l.getAttribute("data-page") === page;
+      l.classList.toggle("active", on);
+    });
+    pages.forEach((p) => p.classList.remove("active"));
+    const target = document.getElementById("page-" + page);
+    if (target) target.classList.add("active");
+    closeMenu();
+  }
+
   links.forEach((link) => {
     link.addEventListener("click", (e) => {
       e.preventDefault();
-      const page = link.getAttribute("data-page");
-      links.forEach((l) => l.classList.remove("active"));
-      link.classList.add("active");
-      pages.forEach((p) => p.classList.remove("active"));
-      const target = document.getElementById("page-" + page);
-      if (target) target.classList.add("active");
-      closeMenu();
+      showPage(link.getAttribute("data-page"));
     });
   });
 
@@ -63,8 +70,34 @@
         if (isMatch) panel.removeAttribute("hidden");
         else panel.setAttribute("hidden", "");
       });
+      applySearch();
     });
   });
+
+  const search = document.getElementById("mod-search");
+  const countEl = document.getElementById("result-count");
+
+  function visiblePanel() {
+    return document.querySelector(".category-panel.active");
+  }
+
+  function applySearch() {
+    const q = (search && search.value || "").trim().toLowerCase();
+    const panel = visiblePanel();
+    if (!panel) return;
+    const cards = panel.querySelectorAll(".mod-card");
+    let shown = 0;
+    cards.forEach((card) => {
+      const hay = ((card.getAttribute("data-search") || "") + " " + card.textContent).toLowerCase();
+      const ok = !q || hay.indexOf(q) !== -1;
+      card.style.display = ok ? "" : "none";
+      if (ok) shown += 1;
+    });
+    if (countEl) countEl.textContent = shown + " pack" + (shown === 1 ? "" : "s") + " in this series";
+  }
+
+  if (search) search.addEventListener("input", applySearch);
+  applySearch();
 
   const lootOverlay = document.getElementById("loot-overlay");
   const lootModal = document.getElementById("loot-modal");
