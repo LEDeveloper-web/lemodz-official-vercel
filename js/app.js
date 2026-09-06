@@ -65,7 +65,7 @@
       tab.classList.add("active");
       tab.setAttribute("aria-selected", "true");
       categoryPanels.forEach((panel) => {
-        const isMatch = panel.id === "category-" + cat;
+        const isMatch = cat === "all" || panel.id === "category-" + cat;
         panel.classList.toggle("active", isMatch);
         if (isMatch) panel.removeAttribute("hidden");
         else panel.setAttribute("hidden", "");
@@ -77,21 +77,17 @@
   const search = document.getElementById("mod-search");
   const countEl = document.getElementById("result-count");
 
-  function visiblePanel() {
-    return document.querySelector(".category-panel.active");
-  }
-
   function applySearch() {
     const q = (search && search.value || "").trim().toLowerCase();
-    const panel = visiblePanel();
-    if (!panel) return;
-    const cards = panel.querySelectorAll(".mod-card");
+    const panels = document.querySelectorAll(".category-panel.active");
     let shown = 0;
-    cards.forEach((card) => {
-      const hay = ((card.getAttribute("data-search") || "") + " " + card.textContent).toLowerCase();
-      const ok = !q || hay.indexOf(q) !== -1;
-      card.style.display = ok ? "" : "none";
-      if (ok) shown += 1;
+    panels.forEach((panel) => {
+      panel.querySelectorAll(".mod-card").forEach((card) => {
+        const hay = ((card.getAttribute("data-search") || "") + " " + card.textContent).toLowerCase();
+        const ok = !q || hay.indexOf(q) !== -1;
+        card.style.display = ok ? "" : "none";
+        if (ok) shown += 1;
+      });
     });
     if (countEl) countEl.textContent = shown + " pack" + (shown === 1 ? "" : "s") + " in this series";
   }
